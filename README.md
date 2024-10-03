@@ -70,8 +70,18 @@ Lightly addresses these issues by providing:
 5. **Cost Reduction**: Minimize unnecessary energy consumption, resulting in lower energy bills.
 6. **Scalability**: Lightly can be deployed in homes, businesses, and even large utility networks.
 
+Here's how you can update the **Testing & Development** section with the steps for the Python API using Flask:
+
+---
+
+Here's an updated **Testing & Development** section that includes the setup for the SQLite3 database used to save energy information:
+
+---
+
 ## **Testing & Development**
-To contribute to the development or test the app, follow these steps:
+
+### Web App
+To contribute to the development or test the web app, follow these steps:  
 1. Clone the repository:
     ```bash
     git clone https://github.com/dayosalam/lightlytech.git
@@ -87,8 +97,71 @@ To contribute to the development or test the app, follow these steps:
     npm start
     ```
 
+### Python API (Flask) with SQLite3 Database
+To contribute to or test the Python API that saves energy information using SQLite3, follow these steps:  
+1. Ensure you have **Python 3.x** and **pip** installed on your machine.
+2. Clone the repository:
+    ```bash
+    git clone https://github.com/dayosalam/lightlytech.git
+    ```
+3. Navigate to the Python API folder:
+    ```bash
+    cd lightlytech/api
+    ```
+4. Create and activate a virtual environment (optional but recommended):
+    - On macOS/Linux:
+      ```bash
+      python3 -m venv venv
+      source venv/bin/activate
+      ```
+    - On Windows:
+      ```bash
+      python -m venv venv
+      venv\Scripts\activate
+      ```
+5. Install the required dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+6. Initialize the SQLite3 database:
+    - A basic database schema file (`schema.sql`) is provided to create the required tables.
+    - Run the following command to initialize the database:
+      ```bash
+      sqlite3 sensor_data.db < schema.sql
+      ```
+    This will create the database (`sensor_data.db`) with the necessary structure for storing energy information.
 
-Contributions to the web3 features: Coming Soon!!!
+7. Start the Flask server:
+    ```bash
+    flask run
+    ```
+   By default, the Flask server will run at `http://127.0.0.1:5000/`.
+   
+8. Test the API by accessing the simple HTML page (`lig.html`):
+    - Open your browser and go to `http://127.0.0.1:5000`.
+
+9. View and manage the energy data:
+    - Energy data will be saved into the `sensor_data.db` file in the same directory.
+    - You can inspect the data using SQLite3 by running:
+      ```bash
+      sqlite3 sensor_data.db
+      ```
+    - Once inside the SQLite shell, you can run SQL queries such as:
+      ```sql
+      SELECT * FROM energy_usage;
+      ```
+
+### Contributions to the Web3 Features: Coming Soon!!!
+
+---
+
+This addition covers the integration of SQLite3, explaining how to initialize and manage the database to store energy usage information. Let me know if you need further adjustments!
+
+### Contributions to the Web3 Features: Coming Soon!!!
+
+---
+
+This section gives clear instructions on setting up both the web app and the Flask-based Python API, with an easy-to-follow development process. Let me know if you need any more additions or edits!
 
 ## **Contributing**
 We welcome contributions from developers, designers, and blockchain enthusiasts. Here's how you can contribute:

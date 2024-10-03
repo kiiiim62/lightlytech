@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT Data Display</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <style>
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>MQTT Messages</h1>
+    <div>
+        <label class="switch">
+            <input type="checkbox" id="switch1" onchange="sendData(1, this.checked)">
+            <span class="slider"></span>
+        </label>
+        <label class="switch">
+            <input type="checkbox" id="switch2" onchange="sendData(2, this.checked)">
+            <span class="slider"></span>
+        </label>
+        <label class="switch">
+            <input type="checkbox" id="switch3" onchange="sendData(3, this.checked)">
+            <span class="slider"></span>
+        </label>
+        <label class="switch">
+            <input type="checkbox" id="switch4" onchange="sendData(4, this.checked)">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <ul id="messages"></ul>
+
+    <script>
+        var socket = io();
+        var switchStates = [0, 0, 0, 0];
+
+        socket.on('mqtt_message', function (msg) {
+            var messagesElement = document.getElementById('messages');
+            var li = document.createElement('li');
+            li.textContent = JSON.stringify(msg.data);
+            messagesElement.appendChild(li);
+        });
+
+        function sendData(switchNumber, isOn) {
+            switchStates[switchNumber - 1] = isOn ? 1 : 0;
+
+            var data = {
+                value: switchStates
+            };
+
+            fetch('/receive_data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+
+</html>
