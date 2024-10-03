@@ -3,8 +3,8 @@
 ![LightlyTechnology!](/assets/images/Lightly.png "LightlyTechnology")
 
 ### Links
-[LightlyTech Twitter](https://x.com/lightlytec)
-[LightlyTech Figma](https://www.figma.com/design/sF4cpXZkiBNWwJZbzwSN0W/Lightly?node-id=5-165&node-type=canvas&t=waYj3GG4OgGEk6wL-0)
+- [LightlyTech Twitter](https://x.com/lightlytec)
+- [LightlyTech Figma](https://www.figma.com/design/sF4cpXZkiBNWwJZbzwSN0W/Lightly?node-id=5-165&node-type=canvas&t=waYj3GG4OgGEk6wL-0)
 
 ## Table of Contents
 
