@@ -155,13 +155,6 @@ To contribute to or test the Python API that saves energy information using SQLi
 
 ---
 
-This addition covers the integration of SQLite3, explaining how to initialize and manage the database to store energy usage information. Let me know if you need further adjustments!
-
-### Contributions to the Web3 Features: Coming Soon!!!
-
----
-
-This section gives clear instructions on setting up both the web app and the Flask-based Python API, with an easy-to-follow development process. Let me know if you need any more additions or edits!
 
 ## **Contributing**
 We welcome contributions from developers, designers, and blockchain enthusiasts. Here's how you can contribute:
